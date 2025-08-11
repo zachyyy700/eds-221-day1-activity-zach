@@ -1,0 +1,32 @@
+---
+title: "stl_lead_ineq"
+author: "zachyloo"
+format: html
+editor: visual
+---
+
+## Attach packages
+```{r}
+library(tidyverse)
+library(janitor)
+```
+
+## Data time
+```{r}
+# read in 
+stl_lead <- read_csv(here::here("data", "stl_blood_lead.csv"))
+names(stl_lead)
+
+# clean names
+stl_lead <- stl_lead %>% clean_names()
+names(stl_lead)
+
+# basic summary stats
+skimr::skim(stl_lead)
+```
+
+```{r}
+# using dplyr to create a new column
+stl_lead %>% dplyr::mutate(prop_white = white /total_pop)
+```
+
