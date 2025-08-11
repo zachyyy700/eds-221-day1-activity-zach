@@ -57,4 +57,7 @@ ggplot(data = stl_lead_propwhite, aes(x = pct_elevated)) +
        y = "Count") +
   theme_void()
 ```
+```{r}
+ggsave(here::here("figs", "elevatedlevels_histogram.jpg"), height = 6, width = 7)
+```
 
