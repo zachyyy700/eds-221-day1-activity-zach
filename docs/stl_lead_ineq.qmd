@@ -27,6 +27,34 @@ skimr::skim(stl_lead)
 
 ```{r}
 # using dplyr to create a new column
-stl_lead %>% dplyr::mutate(prop_white = white /total_pop)
+stl_lead_propwhite <- stl_lead %>% dplyr::mutate(prop_white = (white /total_pop) * 100)
+```
+
+## Plot time
+```{r}
+# scatterplot
+stl_lead_plot <- ggplot(data = stl_lead_propwhite, aes(x = pct_elevated, y = prop_white)) + 
+  geom_point(color = "blue") + 
+  labs(title = "St. Louis Lead Comparison",
+       x = "Percent of Children with Elevated Lead",
+       y = "Percent of White Children") +
+  theme_minimal()
+
+stl_lead_plot
+```
+Here the plot is comparing the percent of children with elevated lead levels to the percent of white children. The scatterplot shows a negative relationship, indicating that areas with higher percentages of white children in this study had low lead levels and areas with low percentages of white children has higher lead levels.
+```{r}
+#save as png
+ggsave(here::here("figs", "pct_scatter.png"), height = 5, width = 6)
+```
+
+```{r}
+# histogram
+ggplot(data = stl_lead_propwhite, aes(x = pct_elevated)) + 
+  geom_histogram(color = "blue", fill = "yellow", binwidth = 10) +
+  labs(title = "Elevated Levels per 100",
+       x = "Elevated Levels per 100 Distribution",
+       y = "Count") +
+  theme_void()
 ```
 
