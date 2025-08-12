@@ -38,7 +38,7 @@ stl_lead_plot <- ggplot(data = stl_lead_propwhite, aes(x = pct_elevated, y = pro
   labs(title = "St. Louis Lead Comparison",
        x = "Percent of Children with Elevated Lead",
        y = "Percent of White Children") +
-  theme_minimal()
+  theme_light()
 
 stl_lead_plot
 ```
@@ -55,7 +55,7 @@ ggplot(data = stl_lead_propwhite, aes(x = pct_elevated)) +
   labs(title = "Elevated Levels per 100",
        x = "Elevated Levels per 100 Distribution",
        y = "Count") +
-  theme_void()
+  theme_light()
 ```
 ```{r}
 ggsave(here::here("figs", "elevatedlevels_histogram.jpg"), height = 6, width = 7)
